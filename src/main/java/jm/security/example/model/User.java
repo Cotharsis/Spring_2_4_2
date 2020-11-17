@@ -10,7 +10,7 @@ import java.util.Set;
 // UserDetails можно представить, как адаптер между БД пользователей и тем что требуется Spring Security внутри SecurityContextHolder
 public class User implements UserDetails {
     private Long id;
-    private String name; // уникальное значение
+    private String username; // уникальное значение
     private String password;
     private Set<Role> roles;
 
@@ -18,9 +18,9 @@ public class User implements UserDetails {
 
     }
 
-    public User(Long id, String name, String password, Set<Role> roles) {
+    public User(Long id, String username, String password, Set<Role> roles) {
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.password = password;
         this.roles = roles;
     }
@@ -33,14 +33,9 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -54,7 +49,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return name;
+        return username;
     }
 
     @Override
