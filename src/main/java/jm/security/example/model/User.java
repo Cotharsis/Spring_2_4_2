@@ -22,26 +22,19 @@ public class User implements UserDetails {
     private String password;
     private Set<Role> roles;
 
-//    public User(String name, int year, String address, Long id, String username,
-//                String password, Set<Role> roles) {
-//        this.name = name;
-//        this.year = year;
-//        this.address = address;
-//        this.id = id;
-//        this.username = username;
-//        this.password = password;
-//        this.roles = roles;
-//    }
-
-    public User() {
-
-    }
-
-    public User(Long id, String username, String password, Set<Role> roles) {
+    public User( Long id, String username,
+                String password, Set<Role> roles, String name, int year, String address) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.roles = roles;
+        this.name = name;
+        this.year = year;
+        this.address = address;
+    }
+
+    public User() {
+
     }
 
     public Long getId() {

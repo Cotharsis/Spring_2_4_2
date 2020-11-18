@@ -5,12 +5,14 @@ import jm.security.example.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Repository
 public class UserDaoImpl implements UserDao {
     private final Map<String, User> userMap = Collections.singletonMap("test",
-            new User(1L, "test", "test", Collections.singleton(new Role(1L, "ROLE_USER")))); // name - уникальное значение, выступает в качестве ключа Map
+            new User(1L, "test", "test", Collections.singleton(new Role(1L, "ROLE_USER")),
+                    "Arsenii",12,"Manxeten")); // name - уникальное значение, выступает в качестве ключа Map
 
     @Override
     public User getUserByName(String name) {
@@ -19,6 +21,31 @@ public class UserDaoImpl implements UserDao {
         }
 
         return userMap.get(name);
+    }
+
+    @Override
+    public User getById(int id) {
+        return null;
+    }
+
+    @Override
+    public List<User> allUsers() {
+        return null;
+    }
+
+    @Override
+    public void add(User user) {
+
+    }
+
+    @Override
+    public void delete(User user) {
+
+    }
+
+    @Override
+    public void edit(User user) {
+
     }
 }
 
