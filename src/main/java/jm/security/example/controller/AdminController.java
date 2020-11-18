@@ -26,7 +26,7 @@ public class AdminController {
     public ModelAndView allUsers() {
         List<User> users = userService.allUsers();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("users");
+        modelAndView.setViewName("/users");
         modelAndView.addObject("userList", users);
         return modelAndView;
     }
@@ -35,7 +35,7 @@ public class AdminController {
     public ModelAndView editPage(@PathVariable("id") int id) {
         User user = userService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editUser");
+        modelAndView.setViewName("/editUser");
         modelAndView.addObject("user", userService.getById(id));
         modelAndView.addObject("user", user);
         return modelAndView;
@@ -50,7 +50,7 @@ public class AdminController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editUser");
+        modelAndView.setViewName("/editUser");
         return modelAndView;
     }
     @RequestMapping(value = "/add", method = RequestMethod.POST)
