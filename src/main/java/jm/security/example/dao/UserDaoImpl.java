@@ -4,9 +4,7 @@ import jm.security.example.model.Role;
 import jm.security.example.model.User;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -30,7 +28,13 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> allUsers() {
-        return null;
+        Set <Role>roles = new HashSet<Role>();
+        roles.add(new Role(2L, "ROLE_USER"));
+        roles.add(new Role(2L, "ROLE_LUSER"));
+       List<User>users=new ArrayList<User>();
+        users.add(new User(2L,"Vovan","123", roles,
+                "Vladislav",31,"Magnitogorsk"));
+        return users;
     }
 
     @Override

@@ -32,6 +32,15 @@ public class User implements UserDetails {
         this.year = year;
         this.address = address;
     }
+    public User( Long id, String username,
+                 String password, String name, int year, String address) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.year = year;
+        this.address = address;
+    }
 
     public User() {
 

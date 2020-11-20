@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello user</title>
+</head>
+
+<div>
+    <tr th:each="user : ${userList}">
+    </tr>
+</div>
+
+<h2>Users</h2>
+<table border="1" width="40%">
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>password</th>
+        <th>roles</th>
+        <th>name</th>
+        <th>year</th>
+        <th>address</th>
+        <th>action</th>
+    </tr>
+
+        <th:block th:each="user : ${userList}">
+            <tr th:each="role : ${user.roles}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${role.role}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.year}"></td>
+            <td th:text="${user.address}"></td>
+
+            <td>
+                <a href="/edit/${user.id}">edit</a>
+                <a href="/delete/${user.id}"> delete</a>
+            </td>
+        </tr>
+    </th:block>
+</table>
+
+<h2>Add</h2>
+<th:url value="/admin/add" var="add"/>
+<a href="${add}">Add new user</a>
+
+</body>
+</html>
