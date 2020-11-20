@@ -4,39 +4,32 @@
 <!--    <th:block-->
 <!--            th:test="${user.name != null ? 'Add':'Edit'}">-->
 <!--    </th:block>-->
-    <th:if test="${empty user.name}">
         <title>Add</title>
-    </th:if>
 <!--    <th:if test="${!empty user.name}">-->
 <!--        <title>Edit</title>-->
 <!--    </th:if>-->
 </head>
 
 <body>
-
-<th:if test="${empty user.name}">
-    <th:url value="/admin/add" var="var"/>
-</th:if>
+<!--    <th:url value="/admin/add" var="var"/>-->
 
 <!--<th:if test="${!empty user.name}">-->
 <!--    <th:url value="/admin/edit" var="var"/>-->
 <!--</th:if>-->
 
-<form action="${var}" method="POST">
-    <th:if test="${!empty user.name}">
-        <input type="hidden" name="id" value="${user.id}">
-    </th:if>
+<!--<form action="${var}" method="POST">-->
+<form action="#" th:action="@{/admin/add}" th:object="${user}" method="post">
 
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name">
+<!--    <input type="hidden" name="id" value="${user.id}">-->
+<!--    <label for="name">Name</label>-->
+<!--    <input type="text" th:field="*{name}" id="name" placeholder="Name">-->
+
     <label for="year">Year</label>
     <input type="text" name="year" id="year">
     <label for="address">Address</label>
     <input type="text" name="address" id="address">
 
-    <th:if test="${empty user.name}">
-        <input type="submit" value="Add new user">
-    </th:if>
+    <input type="submit" value="Add new user">
 
 <!--    <th:if test="${!empty user.name}">-->
 <!--        <input type="submit" value="Edit user">-->
