@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+        <title>Add</title>
+</head>
+<body>
+<form action="#" th:action="@{/admin/add}" th:object="${user}" method="post">
+
+
+    <table border="1" width="16%">
+        <tr>
+            <th>Parameter</th>
+            <th>Field</th>
+        </tr>
+        <th:block>
+<!--                <input type="hidden" name="id" value="${user.id}">-->
+
+            <tr>
+                <td><label for="username">Username</label></td>
+                <td><input type="text" name="username" id="username"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td><input type="text" name="password" id="password"></td>
+            </tr>
+            <!--        <th>roles</th>-->
+            <tr>
+                <td><label for="name">Name</label></td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="year">Year</label></td>
+                <td><input type="text" name="year" id="year"></td>
+            </tr>
+            <tr>
+                <td><label for="address">Address</label></td>
+                <td><input type="text" name="address" id="address"></td>
+            </tr>
+        </th:block>
+    </table>
+    <br>
+    <input type="submit" value="Add new user">
+
+</form>
+</body>
+</html>

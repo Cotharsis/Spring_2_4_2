@@ -1,14 +1,13 @@
 package jm.security.example.controller;
 
 
+import jm.security.example.dao.UserDaoImpl;
 import jm.security.example.model.User;
 import jm.security.example.service.UserService;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -18,8 +17,11 @@ import java.util.List;
 public class AdminController {
     private final UserService userService;
 
-    public AdminController(UserService userService) {
+    private final UserDaoImpl userDao;
+
+    public AdminController(UserService userService, UserDaoImpl userDao) {
         this.userService = userService;
+        this.userDao = userDao;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -36,21 +38,37 @@ public class AdminController {
         User user = userService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editUser");
-        modelAndView.addObject("user", userService.getById(id));
+        //modelAndView.addObject("user", userService.getById(id));
         modelAndView.addObject("user", user);
         return modelAndView;
     }
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ModelAndView editUser(@ModelAttribute("user") User user) {
+
+//    @GetMapping("/{id}/edit")
+//    public String edit(Model model, @PathVariable("id") int id){
+//        model.addAttribute("persong",userService.getById(id));
+//        return "people/edit";
+//}
+
+//    @PatchMapping("/{id}")
+//    public String update(@ModelAttribute("bespol") User user, @PathVariable("id") int id) {
+//        userDao.update(id, user);
+//        return "redirect:/admin";
+//    }
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.PATCH)
+    public ModelAndView editUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
+
+        userDao.update(id, user);
+//        userService.edit(user);
         modelAndView.setViewName("redirect:/admin");
-        userService.edit(user);
         return modelAndView;
     }
+
+
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editUser");
+        modelAndView.setViewName("addUser");
         return modelAndView;
     }
     @RequestMapping(value = "/add", method = RequestMethod.POST)

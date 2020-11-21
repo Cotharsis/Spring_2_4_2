@@ -17,40 +17,41 @@ public class User implements UserDetails {
 //    @Id
 //    @Column(name = "id")
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    private Long id;
+    private int id;
     private String username; // уникальное значение
     private String password;
     private Set<Role> roles;
 
-    public User( Long id, String username,
-                String password, Set<Role> roles, String name, int year, String address) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
-        this.name = name;
-        this.year = year;
-        this.address = address;
-    }
-//    public User( Long id, String username,
-//                 String password, String name, int year, String address) {
+//    public User( int id, String username,
+//                String password, Set<Role> roles, String name, int year, String address) {
 //        this.id = id;
 //        this.username = username;
 //        this.password = password;
+//        this.roles = roles;
 //        this.name = name;
 //        this.year = year;
 //        this.address = address;
 //    }
+    public User( int id, String username,
+                 String password, String name, int year, String address) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.year = year;
+        this.address = address;
+    }
 
     public User() {
 
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
