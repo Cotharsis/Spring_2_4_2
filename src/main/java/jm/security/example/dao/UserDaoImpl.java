@@ -56,13 +56,17 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void edit(User user) {
+        System.out.println("proisoslo neogidannoe");
     }
 
     public void update(int id, User updatePerson){
         User personTobeUpdated = getById(id);
+        personTobeUpdated.setUsername(updatePerson.getUsername());
+        personTobeUpdated.setPassword(updatePerson.getPassword());
         personTobeUpdated.setName(updatePerson.getName());
         personTobeUpdated.setYear(updatePerson.getYear());
         personTobeUpdated.setAddress(updatePerson.getAddress());
+
     }
 }
 

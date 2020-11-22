@@ -33,15 +33,6 @@ public class AdminController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public ModelAndView editPage(@PathVariable("id") int id) {
-        User user = userService.getById(id);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editUser");
-        //modelAndView.addObject("user", userService.getById(id));
-        modelAndView.addObject("user", user);
-        return modelAndView;
-    }
 
 //    @GetMapping("/{id}/edit")
 //    public String edit(Model model, @PathVariable("id") int id){
@@ -54,16 +45,24 @@ public class AdminController {
 //        userDao.update(id, user);
 //        return "redirect:/admin";
 //    }
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.PATCH)
-    public ModelAndView editUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {
-        ModelAndView modelAndView = new ModelAndView();
 
-        userDao.update(id, user);
-//        userService.edit(user);
-        modelAndView.setViewName("redirect:/admin");
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView editPage(@PathVariable("id") int id) {
+        User user = userService.getById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("editUser");
+        //modelAndView.addObject("user", userService.getById(id));
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
-
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public ModelAndView editUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/admin");
+        userDao.update(id, user);
+        //userService.edit(user);
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ModelAndView addPage() {
@@ -78,6 +77,8 @@ public class AdminController {
         userService.add(user);
         return modelAndView;
     }
+
+
     @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deleteUser(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
