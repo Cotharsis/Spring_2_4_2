@@ -33,12 +33,6 @@ public class WebConfig implements WebMvcConfigurer {
         templateResolver.setSuffix(".html");
         return templateResolver;
     }
-    @Bean
-    ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/pages2/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;}
 
     @Bean
     public SpringTemplateEngine templateEngine() {
@@ -55,4 +49,6 @@ public class WebConfig implements WebMvcConfigurer {
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
+
+
 }
