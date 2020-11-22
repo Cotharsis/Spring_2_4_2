@@ -11,17 +11,19 @@ public class UserDaoImpl implements UserDao {
     private  static int PEOPLE_COUNT;
     private final List<User>users=new ArrayList<User>();
     {Set <Role>roles = new HashSet<Role>();
+    Set <Role>r = new HashSet<Role>();
         roles.add(new Role(2L, "ROLE_USER"));
         roles.add(new Role(2L, "ROLE_LUSER"));
+        r.add(new Role(2L, "ROLE_LUSER"));
 
-        users.add(new User(++PEOPLE_COUNT,"Vovan","123",
+        users.add(new User(++PEOPLE_COUNT,"Vovan","123",roles,
                 "Vladislav",31,"Magnitogorsk"));
-        users.add(new User(++PEOPLE_COUNT,"Jask","123",
+        users.add(new User(++PEOPLE_COUNT,"Jask","123",r,
                 "Jasika",19,"Varcuta"));}
 
 
     private final Map<String, User> userMap = Collections.singletonMap("test",
-            new User(1, "test", "test",
+            new User(1, "test", "test",Collections.singleton(new Role(1L, "ROLE_USER")),
                     "Arsenii",12,"Manxeten")); // name - уникальное значение, выступает в качестве ключа Map
 //Collections.singleton(new Role(1L, "ROLE_USER")),
     @Override
@@ -50,13 +52,11 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void delete(User user) {
-//        users.removeIf(p -> p.getId() == id);
         users.remove(user);
     }
 
     @Override
     public void edit(User user) {
-        System.out.println("proisoslo neogidannoe");
     }
 
     public void update(int id, User updatePerson){
