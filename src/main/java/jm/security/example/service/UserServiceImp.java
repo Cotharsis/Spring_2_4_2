@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 //import javax.transaction.Transactional;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -17,31 +18,31 @@ public class UserServiceImp implements UserService {
         this.userDAO = userDAO;
     }
     @Override
-    //@Transactional
+    @Transactional
     public List<User> allUsers() {
         return userDAO.allUsers();
     }
 
     @Override
-   // @Transactional
+    @Transactional
     public void add(User user) {
         userDAO.add(user);
     }
 
     @Override
-  //  @Transactional
+    @Transactional
     public void delete(User user) {
         userDAO.delete(user);
     }
 
     @Override
-   // @Transactional
+    @Transactional
     public void edit(User user) {
         userDAO.edit(user);
     }
 
     @Override
-   // @Transactional
+    @Transactional
     public User getById(int id) {
         return userDAO.getById(id);
     }

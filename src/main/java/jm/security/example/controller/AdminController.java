@@ -33,19 +33,6 @@ public class AdminController {
         return modelAndView;
     }
 
-
-//    @GetMapping("/{id}/edit")
-//    public String edit(Model model, @PathVariable("id") int id){
-//        model.addAttribute("persong",userService.getById(id));
-//        return "people/edit";
-//}
-
-//    @PatchMapping("/{id}")
-//    public String update(@ModelAttribute("bespol") User user, @PathVariable("id") int id) {
-//        userDao.update(id, user);
-//        return "redirect:/admin";
-//    }
-
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable("id") int id) {
         User user = userService.getById(id);
@@ -59,8 +46,7 @@ public class AdminController {
     public ModelAndView editUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/admin");
-        userDao.update(id, user);
-        //userService.edit(user);
+        userService.edit(user);
         return modelAndView;
     }
 

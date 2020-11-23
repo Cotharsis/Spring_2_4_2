@@ -3,25 +3,26 @@ package jm.security.example.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
 
 // Для того, чтобы в дальнейшим использовать класс User в Spring Security, он должен реализовывать интерфейс UserDetails.
 // UserDetails можно представить, как адаптер между БД пользователей и тем что требуется Spring Security внутри SecurityContextHolder
-//@Entity
-//@Table(name = "users")
+@Entity
+@Table(name = "users")
 public class User implements UserDetails {
-    private String name;
-    private int year;
-    private String address;
-//    @Id
-//    @Column(name = "id")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String username; // уникальное значение
     private String password;
+    @Transient
     private Set<Role> roles;
+    private String name;
+    private int year;
+    private String address;
 
     public User( int id, String username,
                 String password, Set<Role> roles, String name, int year, String address) {
@@ -33,15 +34,6 @@ public class User implements UserDetails {
         this.year = year;
         this.address = address;
     }
-//    public User( int id, String username,
-//                 String password, String name, int year, String address) {
-//        this.id = id;
-//        this.username = username;
-//        this.password = password;
-//        this.name = name;
-//        this.year = year;
-//        this.address = address;
-//    }
 
     public User() {
 

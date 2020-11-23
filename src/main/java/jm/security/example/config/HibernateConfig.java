@@ -48,7 +48,7 @@ public class HibernateConfig {
         vendorAdapter.setShowSql(true);
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("body.model");
+        factory.setPackagesToScan("jm.security.example.model");
         factory.setDataSource(this.dataSource());
         factory.afterPropertiesSet();
 
