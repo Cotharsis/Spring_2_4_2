@@ -16,7 +16,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="Spring_2_4_2" />
+          <factory-entry name="Spring_2_4_2" value="c00dbf33-7387-4f52-8ad4-83aa9e468040" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

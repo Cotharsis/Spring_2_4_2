@@ -2,6 +2,8 @@ package jm.security.example.dao;
 
 import jm.security.example.model.Role;
 import jm.security.example.model.User;
+import jm.security.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -14,11 +16,15 @@ public class UserDaoImpl implements UserDao {
     private EntityManager entityManager;
 
 
-    private final Map<String, User> userMap = Collections.singletonMap("test",
-            new User(1, "test", "test",Collections.singleton(new Role(1L, "ROLE_USER")),
-                    "Arsenii",12,"Manxeten")); // name - уникальное значение, выступает в качестве ключа Map
+    private final Map<String, User> userMap = new HashMap <String,User>();
+    {
+        userMap.put("test", new User(1, "test", "test",Collections.singleton(Role.ROLE_USER),
+                    "Arsenii",12,"Manxeten")); // name - уникальное значение, выступает в качестве ключа Map}
+        userMap.put("test1", new User(2, "test1", "test", Collections.singleton(Role.ROLE_USER),
+                "Arsenii", 12, "Manxeten"));
 
-    @Override
+    }
+
     public User getUserByName(String name) {
         if (!userMap.containsKey(name)) {
             return null;
@@ -56,3 +62,4 @@ public class UserDaoImpl implements UserDao {
 
 }
 
+//    @OverrideCollections.singleton(new Rolek(1L, "ROLE_USER")

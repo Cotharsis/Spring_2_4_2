@@ -18,13 +18,16 @@ public class User implements UserDetails {
     private int id;
     private String username; // уникальное значение
     private String password;
-    @Transient
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    //создвем таблицу юзерроль которая будет соединяться с текущей таблицец через юзер ид
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)//энам храниь в  виде строки
     private Set<Role> roles;
     private String name;
     private int year;
     private String address;
 
-    public User( int id, String username,
+    public User(int id, String username,
                 String password, Set<Role> roles, String name, int year, String address) {
         this.id = id;
         this.username = username;

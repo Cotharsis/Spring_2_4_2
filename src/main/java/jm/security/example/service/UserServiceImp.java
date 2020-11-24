@@ -17,6 +17,7 @@ public class UserServiceImp implements UserService {
     public UserServiceImp(UserDao userDAO) {
         this.userDAO = userDAO;
     }
+
     @Override
     @Transactional
     public List<User> allUsers() {
