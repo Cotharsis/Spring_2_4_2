@@ -57,6 +57,9 @@
           <element id="library" level="project" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.15" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-dbcp:9.0.10" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:9.0.10" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:2.4.0" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:2.4.0" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.9.6" />
         </element>
       </element>
       <element id="directory" name="META-INF">

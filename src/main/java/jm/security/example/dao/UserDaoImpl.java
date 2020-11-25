@@ -19,10 +19,15 @@ public class UserDaoImpl implements UserDao {
     private final Map<String, User> userMap = new HashMap <String,User>();
     {
         userMap.put("test", new User(1, "test", "test",Collections.singleton(Role.ROLE_USER),
-                    "Arsenii",12,"Manxeten")); // name - уникальное значение, выступает в качестве ключа Map}
+                "Arsenii",12,"Manxeten")); // name - уникальное значение, выступает в качестве ключа Map}
         userMap.put("test1", new User(2, "test1", "test", Collections.singleton(Role.ROLE_USER),
                 "Arsenii", 12, "Manxeten"));
 
+//        List<User>users=allUsers();
+//        if(users!=null&&users.size()>0){
+//            for (User user:users){
+//                userMap.put(user.getUsername(),user);
+//            }}
     }
 
     public User getUserByName(String name) {
@@ -52,7 +57,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void delete(User user) {
         entityManager.createQuery("delete from User where id=:id").setParameter("id", user.getId()).executeUpdate();
-        // entityManager.remove(user); // error 500
+
     }
 
     @Override
@@ -61,5 +66,3 @@ public class UserDaoImpl implements UserDao {
     }
 
 }
-
-//    @OverrideCollections.singleton(new Rolek(1L, "ROLE_USER")
