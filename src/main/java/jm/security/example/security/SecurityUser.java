@@ -63,4 +63,5 @@ public class SecurityUser implements UserDetails {
     public Set<Role> getRoles() {
         return roles;
     }
+
 }

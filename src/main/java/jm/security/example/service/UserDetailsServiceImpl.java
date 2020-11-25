@@ -24,6 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        this.userRepository = userRepository;
 //    }
 
+
     // «Пользователь» – это просто Object. В большинстве случаев он может быть
     //  приведен к классу UserDetails.
     // Для создания UserDetails используется интерфейс UserDetailsService, с единственным методом:

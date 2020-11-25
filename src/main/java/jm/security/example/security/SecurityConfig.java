@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
     }
 
+
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.authenticationProvider(daoAuthenticationProvider());
