@@ -15,27 +15,10 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-
-//    private final Map<String, User> userMap = new HashMap <String,User>();
-//    {
-//        userMap.put("test", new User(1, "test", "test",Collections.singleton(Role.ROLE_USER),
-//                "Arsenii",12,"Manxeten")); // name - уникальное значение, выступает в качестве ключа Map}
-//        userMap.put("test1", new User(2, "test1", "test", Collections.singleton(Role.ROLE_USER),
-//                "Arsenii", 12, "Manxeten"));
-//
-//        List<User>users=allUsers();
-// //       if(users!=null&&users.size()>0){
-//            for (User user:users){
-//                userMap.put(user.getUsername(),user);
-//            }
-//
-//    }
-
     public User getUserByName(String name) {
-        User user =(User) entityManager.createQuery("FROM User u where u.name = :name").setParameter("name", name).getSingleResult();
-//        if (!userMap.containsKey(name)) {
-//            return null;
-//        }
+        User user =(User) entityManager.createQuery("FROM User u where u.username = :username")
+                .setParameter("username", name).getSingleResult();
+
         return user;
     }
 

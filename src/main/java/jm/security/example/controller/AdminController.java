@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin")
@@ -61,6 +62,7 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/admin");
         user.setRoles(Collections.singleton(Role.ROLE_USER));
+//        user.setRoles(Set.of(Role.ROLE_USER, Role.ROLE_ADMIN));
         userService.add(user);
         return modelAndView;
     }
