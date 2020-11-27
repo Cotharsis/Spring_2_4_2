@@ -1,14 +1,12 @@
 package jm.security.example.controller;
-
 import jm.security.example.model.User;
 import jm.security.example.service.UserService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+
 
 @Controller
 @RequestMapping("")
@@ -32,11 +30,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public ModelAndView CameUser() {
-        List<User> users = userService.allUsers();
+   public ModelAndView CameUser(@AuthenticationPrincipal User user) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user");
-        modelAndView.addObject("userList", users);
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 }

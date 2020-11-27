@@ -1,11 +1,7 @@
 package jm.security.example.dao;
 
-import jm.security.example.model.Role;
 import jm.security.example.model.User;
-import jm.security.example.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.*;

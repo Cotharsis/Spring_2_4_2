@@ -1,19 +1,14 @@
 package jm.security.example.controller;
 
-
-import jm.security.example.dao.UserDaoImpl;
 import jm.security.example.model.Role;
 import jm.security.example.model.User;
 import jm.security.example.service.UserService;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+
 
 @Controller
 @RequestMapping("/admin")
