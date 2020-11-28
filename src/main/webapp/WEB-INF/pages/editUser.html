@@ -18,10 +18,30 @@
                 <td><input type="text" name="username" th:field="*{username}" id="username"></td>
             </tr>
             <tr>
-                <td><label for="password">Password</label></td>
-                <td><input type="text" name="password" th:field="*{password}" id="password"></td>
+                <td><label for="passsword">Password</label></td>
+                <td><input type="text" name="password1" th:field="*{password}" id="passsword"></td>
             </tr>
-            <!--        <th>roles</th>-->
+            <tr>
+                <td><label>Roles</label></td>
+                <td>
+<!--                    <div th:each="roles : ${allRoles}">-->
+<!--                        <input type="checkbox" th:field="*{rolesNeeded}"  th:value="${role.id}"/><label th:text="${role.name}">Role1</label>-->
+<!--                    </div>-->
+<!--                    <div class="checkbox" th:each="service : ${allRoles}">-->
+<!--                        <label> <input th:value="${service}" th:field="*{roles}" type="checkbox"/>-->
+<!--                            <span th:text="${service.name}" th:remove="tag"> </span>-->
+<!--                        </label>-->
+<!--                    </div>-->
+
+                    <div th:each="role : ${user.roles}">
+
+                        <input type="checkbox"  th:field="*{roles}" th:id="${role}" th:value="${role}"/>
+
+                        <span th:text="${role}" th:remove="tag"> </span>
+                    </div>
+<!--                    <input type="checkbox" name="roles2"  id="ROLE_ADMIN" value="ROLE_ADMIN">ADMIN-->
+                </td>
+            </tr>
             <tr>
                 <td><label for="name">Name</label></td>
                 <td><input type="text" name="name"  th:field="*{name}" id="name"></td>

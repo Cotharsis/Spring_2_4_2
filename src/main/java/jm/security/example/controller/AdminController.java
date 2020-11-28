@@ -3,6 +3,7 @@ package jm.security.example.controller;
 import jm.security.example.model.Role;
 import jm.security.example.model.User;
 import jm.security.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,8 @@ import java.util.List;
 public class AdminController {
 
     private final UserService userService;
+
+
 
     public AdminController(UserService userService) {
         this.userService = userService;
@@ -34,6 +37,7 @@ public class AdminController {
         User user = userService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editUser");
+        modelAndView.addObject("allRoles", Role.values());
         modelAndView.addObject("user", user);
         return modelAndView;
     }
