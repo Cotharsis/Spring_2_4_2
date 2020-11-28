@@ -53,7 +53,6 @@ public class AdminController {
     public ModelAndView addPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("addUser");
-
         return modelAndView;
     }
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -61,7 +60,7 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/admin");
         user.setRoles(Collections.singleton(Role.ROLE_USER));
-//        user.setRoles(Set.of(Role.ROLE_USER, Role.ROLE_ADMIN));
+//      user.setRoles(Set.of(Role.ROLE_USER, Role.ROLE_ADMIN));
         userService.add(user);
         return modelAndView;
     }

@@ -13,7 +13,6 @@
             <th>Field</th>
         </tr>
         <th:block>
-<!--                <input type="hidden" name="id" value="${user.id}">-->
 
             <tr>
                 <td><label for="username">Username</label></td>
@@ -23,11 +22,15 @@
                 <td><label for="password">Password</label></td>
                 <td><input type="text" name="password" id="password"></td>
             </tr>
-            <tr>
-                <td><label for="roles">Roles</label></td>
-                <td><input type="text" name="roles" id="roles"></td>
-            </tr>
-
+<!--            <tr>-->
+<!--                <td><label>Roles</label></td>-->
+<!--                <td>-->
+<!--                    <div  th:each="roleA : ${allRoles}" >-->
+<!--                        <input type="checkbox" th:value="${roleA}" />-->
+<!--                        <span th:text="${roleA}" th:remove="tag"> </span>-->
+<!--                    </div>-->
+<!--                </td>-->
+<!--            </tr>-->
             <tr>
                 <td><label for="name">Name</label></td>
                 <td><input type="text" name="name" id="name"></td>
